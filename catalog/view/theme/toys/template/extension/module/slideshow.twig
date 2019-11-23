@@ -1,0 +1,29 @@
+<div class="home-page__information">
+  <h1>Ань-Янь</h1>
+  <p>Производство<br>и оптовая продажа</p>
+  <a href="#" class="information__btn btn_orange">Каталог <img src="./image/catalog/toys-store/slider/arrow.svg" alt="стрела"></a>
+  <div class="swiper-pager swiper-pager-slideshow">
+    <div class="carousel__arrow prev"></div>
+    <div class="carousel__arrow next"></div>
+  </div>
+</div>
+<div id="slideshow{{ module }}" class="swiper-container">
+  <div class="swiper-wrapper"> 
+    {% for banner in banners %}
+      <div class="swiper-slide slider__slide" style="background-image: url(./image/{{ banner.image }})"></div>
+    {% endfor %} 
+  </div>
+  <div class="swiper-pagination slideshow{{ module }}"></div>
+</div>
+<script type="text/javascript"><!--
+$('#slideshow{{ module }}').swiper({
+	mode: 'horizontal',
+	slidesPerView: 1,
+	pagination: '.slideshow{{ module }}',
+	paginationClickable: true,
+	nextButton: '.carousel__arrow.next',
+  prevButton: '.carousel__arrow.prev',
+	autoplay: 8000,
+	loop: true
+});
+--></script>

@@ -1,0 +1,33 @@
+<section class="manufactures my-container">
+  <h2>Наши партнеры</h2>
+  <div class="manufactures__carousel">
+    <div id="carousel{{ module }}" class="swiper-container">
+      <div class="swiper-wrapper">
+        {% for banner in banners %}
+        <div class="swiper-slide text-center">
+          {% if banner.link %}
+          <a href="{{ banner.link }}">
+            <img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" />
+          </a>
+          {% else %}
+          <img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" />
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="carousel__arrow manufactures__arrow_prev"></div>
+    <div class="carousel__arrow manufactures__arrow_next"></div>
+  </div>
+</section>
+<script type="text/javascript"><!--
+$('#carousel{{ module }}').swiper({
+  mode: 'horizontal',
+  slidesPerView: 5,
+  nextButton: '.manufactures__arrow_next',
+  prevButton: '.manufactures__arrow_prev',
+  autoplay: 3000,
+  spaceBetween: 70,
+  loop: true
+});
+--></script>

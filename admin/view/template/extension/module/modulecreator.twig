@@ -1,0 +1,163 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+		<button type="submit" form="form-featured" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+      </div>
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-featured" class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-module">{{ entry_module }}</label>
+            <div class="col-sm-10">
+			  <select name="module" id="input-module" class="form-control">
+			  <option value="" id="input-module"></option>
+			  {% for key,module in module_list %}
+			    <optgroup label="{{ key }}">
+				  {% for modfile in module %}
+					<option value="{{ modfile }}">{{ modfile }}</option>
+				  {% endfor %}
+				</optgroup>
+			  {% endfor %}
+			  </select>
+            </div>
+          </div>
+		  <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-name">{{ entry_name }}</label>
+            <div class="col-sm-10">
+              <input type="text" name="name" value="{{ name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
+              {% if error_name %}
+              <div class="text-danger">{{ error_name }}</div>
+              {% endif %}
+            </div>
+          </div>
+		  <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-type">{{ entry_type }}</label>
+            <div class="col-sm-10">
+			  <select name="type" id="input-type" class="form-control">
+			  {% for category in categories %}
+				<option value="{{ category.code }}">{{ category.text }}</option>
+			  {% endfor %}
+			  </select>
+            </div>
+          </div>
+		  <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-title">{{ entry_title }}</label>
+            <div class="col-sm-10">
+			  {% for language in languages %}
+              <div class="input-group"><span class="input-group-addon"><img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" /></span>
+                <input type="text" name="title[{{ language.language_id }}]" value="" placeholder="{{ entry_title }}" class="form-control" />
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+		  <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-setting-clone">{{ entry_setting_clone }}</label>
+            <div class="col-sm-10">
+              <select name="setting_clone" id="input-setting-clone" class="form-control">
+                <option value="1" selected="selected">{{ text_enabled }}</option>
+                <option value="0">{{ text_disabled }}</option>
+              </select>
+            </div>
+          </div>
+		  <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_files }}</label>
+            <div class="col-sm-10">
+              <div class="well well-sm" style="height: 250px; overflow: auto;">
+                <div class="checkbox">
+                  <label>
+					<input onclick="return false;" type="checkbox" name="createfile[]" value="admin/controller" checked="checked" />
+					admin/controller
+                  </label>
+                </div>
+				<div class="checkbox">
+                  <label>
+					<input type="checkbox" name="createfile[]" value="admin/model" checked="checked" />
+					admin/model
+                  </label>
+                </div>
+				{% for language in languages %}
+				<div class="checkbox">
+                  <label>
+					<input onclick="return false;" type="checkbox" name="createfile[]" value="admin/language/{{ language.code }}" checked="checked" />
+					admin/language/{{ language.code }}
+                  </label>
+                </div>
+				{% endfor %}
+				<div class="checkbox">
+                  <label>
+					<input onclick="return false;" type="checkbox" name="createfile[]" value="admin/view" checked="checked" />
+					admin/view
+                  </label>
+                </div>
+				<div class="checkbox">
+                  <label>
+					<input type="checkbox" name="createfile[]" value="catalog/controller" checked="checked" />
+					catalog/controller
+                  </label>
+                </div>
+				<div class="checkbox">
+                  <label>
+					<input type="checkbox" name="createfile[]" value="catalog/model" checked="checked" />
+					catalog/model
+                  </label>
+                </div>
+				{% for language in languages %}
+				<div class="checkbox">
+                  <label>
+					<input type="checkbox" name="createfile[]" value="catalog/language/{{ language.code }}" checked="checked" />
+					catalog/language/{{ language.code }}
+                  </label>
+                </div>
+				{% endfor %}
+				<div class="checkbox">
+                  <label>
+					<input type="checkbox" name="createfile[]" value="catalog/view" checked="checked" />
+					catalog/view
+                  </label>
+                </div>
+              </div>
+              <a onclick="$(this).parent().find(':checkbox').prop('checked', true);">{{ text_select_all }}</a> / <a onclick="$(this).parent().find(':checkbox').prop('checked', false);">{{ text_unselect_all }}</a></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$('#input-module').on('change', function(){
+	if ($(this).val() == '') {
+		$('[name=\'name\']').parent().parent().removeClass('hidden');
+		$('[name=\'type\']').parent().parent().removeClass('hidden');
+		$('[name^=\'title\']').parent().parent().parent().removeClass('hidden');
+		$('[name=\'setting_clone\']').parent().parent().removeClass('hidden');
+		$('.well').parent().parent().removeClass('hidden');
+	}
+	else {
+		$('[name=\'name\']').parent().parent().addClass('hidden');
+		$('[name=\'type\']').parent().parent().addClass('hidden');
+		$('[name^=\'title\']').parent().parent().parent().addClass('hidden');
+		$('[name=\'setting_clone\']').parent().parent().addClass('hidden');
+		$('.well').parent().parent().addClass('hidden');
+	}
+});
+</script>
+{{ footer }}

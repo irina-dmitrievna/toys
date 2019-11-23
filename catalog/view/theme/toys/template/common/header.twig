@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="{{ direction }}" lang="{{ lang }}">
+<!--<![endif]-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ title }}</title>
+  {% if robots %}
+  <meta name="robots" content="{{ robots }}" />
+  {% endif %}
+  <base href="{{ base }}" />
+  {% if description %}
+  <meta name="description" content="{{ description }}" />
+  {% endif %}
+  {% if keywords %}
+  <meta name="keywords" content="{{ keywords }}" />
+  {% endif %}
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ og_url }}" />
+  {% if og_image %}
+  <meta property="og:image" content="{{ og_image }}" />
+  {% else %}
+  <meta property="og:image" content="{{ logo }}" />
+  {% endif %}
+  <meta property="og:site_name" content="{{ name }}" />
+  <script src="./catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+  <!-- <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /> -->
+  <script src="./catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+  <link href="./catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  {% for style in styles %}
+  <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
+  {% endfor %}
+  {% for script in scripts %}
+  <script src="{{ script }}" type="text/javascript"></script>
+  {% endfor %}
+  <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+  {% for link in links %}
+  <link href="{{ link.href }}" rel="{{ link.rel }}" />
+  {% endfor %}
+  {% for analytic in analytics %}
+  {{ analytic }}
+  {% endfor %}
+  <link href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans:300,400,700|Roboto|Ubuntu&display=swap&subset=cyrillic" rel="stylesheet">
+  <link href="{{THEME}}/stylesheet/stylesheet.css" rel="stylesheet">
+  <script src="{{THEME}}/js/main.js" defer></script>
+</head>
+<body>
+  <header class="my-container">
+    <div id="logo" class="header__logo logo">
+        {% if logo %}
+          {% if home == og_url %}
+            <img src="{{ logo }}" title="На главную" alt="logo"/>
+          {% else %}
+            <a href="{{ home }}"><img src="{{ logo }}" title="На главную" alt="logo" class="header__logo logo" /></a>
+          {% endif %}
+        {% else %}
+          <h1><a href="{{ home }}">{{ name }}</a></h1>
+        {% endif %}
+    </div>
+
+    <div class="header__top">
+      <!-- Статьи (о нас, котакты, доставка) -->
+      {% if informations %}
+      <ul class="header__aboutUs">
+        {% for information in informations %}
+        <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      <!-- номера телефонов -->
+      <ul class="header__contact-numbers">
+        <li>{{ telephone }}</li>
+        <li>{{ telephone2 }}</li>
+        <li>{{ telephone3 }}</li>
+      </ul>
+    </div>
+    
+    <div class="header__bottom">
+      <!-- каталог -->
+      <div class="header__menu">
+        <a href="#">☰  {{ text_catalog }}</a>
+      </div>
+      <!-- поиск -->
+      <div>{{ search }}</div>
+      <ul class="header__control-menu">
+        <!-- регистрация/авторизация -->
+        <li>
+          <ul class="control-menu__login">
+            {% if logged %}
+            <li><a href="{{ account }}">{{ text_account }}</a></li>
+            {% else %}
+            <li>
+              <a href="{{ login }}">
+                <img src="./image/catalog/toys-store/header/login.svg" alt="login">
+                <span>{{ text_login }}</span></a> /  
+              <a href="{{ register }}">{{ text_register }}</a>  
+            </li>
+            {% endif %}
+          </ul>
+        </li>
+        <!-- корзина -->
+        <li>
+          <a href="{{ shopping_cart }}" title="{{ text_shopping_cart }}">
+            <img src="./image/catalog/toys-store/header/shopping_cart.svg" alt="shopping_cart">
+            <span>{{ text_shopping_cart }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>  
+  {% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}

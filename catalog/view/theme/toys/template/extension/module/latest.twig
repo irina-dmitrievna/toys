@@ -1,0 +1,65 @@
+<section class="latest my-container">
+  <h2>{{ heading_title }}</h2>
+  <div class="products-carousel">
+    <div id="carousel{{ module }}" class="swiper-container">
+      <div class="swiper-wrapper">
+
+        {% for product in products %}
+        <div class="swiper-slide">
+          <div class="product-card">
+            <div class="product-card__image">
+              <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}"  /></a>
+            </div>
+      
+            <div class="product-card__caption">
+              <h4><a class="product-card__headline" href="{{ product.href }}">{{ product.name }}</a></h4>
+              {% if product.rating %}
+              <div class="rating">{% for i in 1..5 %}
+                {% if product.rating < i %} 
+                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> 
+                {% else %} 
+                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i>
+                <i class="fa fa-star-o fa-stack-2x"></i></span> 
+                {% endif %}
+                {% endfor %}
+              </div>
+              {% endif %}
+      
+              {% if product.price %}
+              <div class="product-card__info"> 
+                <span class="info__quantity">В наличии: {{ product.stock }} шт</span>
+                {% if not product.special %}
+                <span class="info__price">{{ product.price }} <img src="./image/catalog/toys-store/products/rub.svg" alt="rub"></span>
+                {% else %}
+                <span class="info__price">
+                  <span class="info__price_old">{{ product.price }} <img src="./image/catalog/toys-store/products/rub_grey.svg" alt="rub"></span> 
+                  <br>{{ product.special }} <img src="./image/catalog/toys-store/products/rub.svg" alt="rub">
+                </span>
+                {% endif %}
+              </div>
+              {% endif %} 
+            </div>
+            <button type="button" onclick="cart.add('{{ product.product_id }}');">
+              <span class="product-card__btn btn_orange">{{ button_cart }}</span>
+            </button>
+          </div>
+  
+        </div> 
+        {% endfor %}
+      </div>
+    </div>
+    <div class="carousel__arrow product__arrow_prev"></div>
+    <div class="carousel__arrow product__arrow_next"></div>
+  </div>
+</section>
+
+<script type="text/javascript"><!--
+$('#carousel{{ module }}').swiper({
+  mode: 'horizontal',
+  slidesPerView: 4,
+  nextButton: '.product__arrow_next',
+  prevButton: '.product__arrow_prev',
+  spaceBetween: 25,
+  loop: true
+});
+--></script>
