@@ -31,16 +31,16 @@
                 {% if not product.special %}
                 <span class="info__price">{{ product.price }} <img src="./image/catalog/toys-store/products/rub.svg" alt="rub"></span>
                 {% else %}
-                <span class="info__price">
+                <p class="info__price">
                   <span class="info__price_old">{{ product.price }} <img src="./image/catalog/toys-store/products/rub_grey.svg" alt="rub"></span> 
                   <br>{{ product.special }} <img src="./image/catalog/toys-store/products/rub.svg" alt="rub">
-                </span>
+                </p>
                 {% endif %}
               </div>
               {% endif %} 
             </div>
-            <button type="button" onclick="cart.add('{{ product.product_id }}');">
-              <span class="product-card__btn btn_orange">{{ button_cart }}</span>
+            <button class="product-card__btn btn_orange" type="button" onclick="cart.add('{{ product.product_id }}');">
+              {{ button_cart }}
             </button>
           </div>
   

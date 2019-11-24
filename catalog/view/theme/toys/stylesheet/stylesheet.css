@@ -1,10 +1,20 @@
 /* Specifications */
 
+:root{
+    /* font-colors */
+    --orange1: #F38E3D;
+    --orange2: #BD5605;
+    --gray1:   #333333;
+    --gray2:   #4F4F4F;
+    --gray3:   #828282;
+    --gray4:   #BDBDBD;
+}
+
 *{
     margin: 0;
     padding: 0;
     font: 16px "Open Sans", sans-serif;
-    color: #333333;
+    color: var(--gray1);
 }
 
 body{
@@ -14,7 +24,6 @@ body{
 a{
     text-decoration: none;
     font: 14px "Open Sans", sans-serif;
-    color: #000;
 }
 
 ul, li{
@@ -30,12 +39,12 @@ h1,h2,h4,p{
 
 h1{
     font: normal 100px/125px 'Lobster', sans-serif;
-    color: #333333;
+    color: var(--gray1);
 }
 
 h2{ 
     font: normal 37px/46px 'Lobster', sans-serif;
-    color: #333333;
+    color: var(--gray1);
     text-align: center;
 }
 
@@ -59,8 +68,8 @@ button {
 
 .btn_orange{
     display: inline-block;
-    background: #F38E3D;
-    border: 2px solid #F38E3D;
+    background: var(--orange1);
+    border: 2px solid var(--orange1);
     border-radius: 5px;
     font: bold 16px/22px 'Open Sans', sans-serif;
     color: #fff;
@@ -110,11 +119,11 @@ header{
     grid-row: 1 / 2;
     padding-top: 10px;
     font-size: 16px;
-    color: #333;
+    color: var(--gray1);
 }
 
 .header__top a{    
-    color: #333;
+    color: var(--gray1);
 }
 
 .header__aboutUs li+li{
@@ -135,14 +144,14 @@ header{
 .header__menu{
     width: 156px;
     max-height: 20px;
-    border: 1px solid #F38E3D;
+    border: 1px solid var(--orange1);
     border-radius: 10px;
     padding: 7px 0 11px 22px;
     font-size: 16px;
 }
 
 .header__menu a{
-    color: #f38e3d;
+    color: var(--orange1);
 }
 
 .header__search{
@@ -223,6 +232,7 @@ header{
         background: url(../image/arrow.png);
         background-position: center;
         background-size: cover;
+        cursor: pointer;
     }
 
     .carousel__arrow.prev {
@@ -247,7 +257,7 @@ header{
     }
 
     .swiper-pagination-bullet-active {
-        background: #BD5605;
+        background: var(--orange2);
     }
 
 /* Privilege */
@@ -368,7 +378,7 @@ header{
 .product-card:hover:before{
     content: '';
     height: 436px;
-    border-color: #F38E3D;
+    border-color: var(--orange1);
 }
 
 .product-card__image{
@@ -398,18 +408,19 @@ header{
 
 .info__quantity{
     font: 300 14px/19px 'Open Sans', sans-serif;
-    color: #4F4F4F; 
+    color: var(--gray2); 
 }
 
 .info__price{
-    font: bold 20px/20px 'Ubuntu', sans-serif;
-    color: #BD5605;
+    font: bold 20px/19px 'Ubuntu', sans-serif;
+    color: var(--orange2);
 }
 
 .info__price_old{
     font: normal 12px/12px 'Open Sans', sans-serif;
-    color: #828282;
+    color: var(--gray3);
     text-decoration: line-through;
+    float: right;
 }
 
 .product-card__btn{
@@ -420,7 +431,7 @@ header{
 
 .product-card__btn:hover{
     background: transparent;
-    color: #F38E3D;
+    color: var(--orange1);
 }
 
 .product-card_active .product-card__btn{
@@ -466,7 +477,7 @@ header{
 
 .about-us__button:hover{
     background: transparent;
-    color: #F38E3D;
+    color: var(--orange1);
 }
 
 /* Manufactures*/
@@ -499,11 +510,11 @@ header{
     padding-bottom: 53px;
     background: #8E3F00;
     font: 400 16px/22px 'Open Sans', sans-serif;
-    color: #FFFFFF;
+    color: #FFF;
 }   
 
 .footer__link{
     font: 400 16px/22px 'Open Sans', sans-serif;
-    color: #FFFFFF;
+    color: #FFF;
 }
 
