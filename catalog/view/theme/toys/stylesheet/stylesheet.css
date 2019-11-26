@@ -18,12 +18,16 @@
 }
 
 body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
     overflow-x: hidden;
 }
 
 a{
     text-decoration: none;
-    font: 14px "Open Sans", sans-serif;
+    font-size: 14px;
 }
 
 ul, li{
@@ -505,7 +509,8 @@ header{
 
 .footer{
     display: grid;
-    grid-template-columns: auto-fit repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template: 1fr;
     padding-top: 68px;
     padding-bottom: 53px;
     background: #8E3F00;
@@ -513,8 +518,6 @@ header{
     color: #FFF;
 }   
 
-.footer__link{
-    font: 400 16px/22px 'Open Sans', sans-serif;
-    color: #FFF;
+footer li,a{
+    color: #fff;
 }
-

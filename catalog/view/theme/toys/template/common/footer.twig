@@ -1,25 +1,63 @@
 <footer class="footer my-container">
 
-  <div class="footer__information">
+  <section class="footer__information">
     <div class="footer__logo">
       {% if logo %}
-          {% if home == og_url %}
-            <img src="{{ logo }}" title="На главную" alt="Ань-Янь"/>
-          {% else %}
-            <a href="{{ home }}"><img src="{{ logo }}" title="На главную" alt="Ань-Янь"/></a>
-          {% endif %}
+        {% if home == og_url %}
+          <img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" />
         {% else %}
-          <h1><a href="{{ home }}">{{ name }}</a></h1>
+          <a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>
         {% endif %}
+      {% else %}
+        <h1><a href="{{ home }}">{{ name }}</a></h1>
+      {% endif %}
     </div>
-    <ul class="footer__contact-numbers">
-      <li>{{ telephone }}</li>
-      <li>{{ telephone2 }}</li>
-      <li>{{ telephone3 }}</li>
+    
+    <li>
+      <a href="#" class="footer__link">р. Крым, Советский район,<br>с. Раздольное, ул. Школьная 3-а</a>
+    </li>
+
+    <li class="footer__contactNumbers">
+      <ul>
+          <li>{{ telephone }}</li>
+          <li>{{ telephone2 }}</li>
+          <li>{{ telephone3 }}</li>
+        </ul>
+    </li>
+    
+    <li>
+      <a href="#" class="footer__link">zakaz@a-ya.toys</a>
+    </li>
+
+  </section>
+
+  <section class="footer__aboutUs">
+    <h3>О нас</h3>
+    <ul class="">
+      {% for key, information in informations if key < 2 %}
+      <li><a href="{{ information.href }}" class="footer__link">{{ information.title }}</a></li>
+      {% endfor %}
     </ul>
-  </div>
+  </section>
 
+  <section class="footer__toBuyers">
+    <h3>Покупателям</h3>
+    <ul>
+      {% for key, information in informations if key >=1 and key < 3 %}
+        <li><a href="{{ information.href }}" class="footer__link">{{ information.title }}</a></li>
+      {% endfor %}
+      <li><a href="#" class="footer__link">Гарантии</a></li>
+      <li><a href="#" class="footer__link">Прайс-лист</a></li>  
+    </ul>
+  </section>
 
+  <section class="footer__partnership">
+    <h3>Сотрудничество</h3>
+    <ul>
+      <li><a href="#" class="footer__link">Поставщикам</a></li>
+      <li><a href="#" class="footer__link">Оптовикам</a></li>
+    </ul>
+  </section>
 
 
 

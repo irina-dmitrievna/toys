@@ -84,3 +84,12 @@
 2019-11-22 12:15:02 - PHP Notice:  Undefined variable: server in C:\MAMP\htdocs\toys\catalog\controller\common\footer.php on line 39
 2019-11-22 12:15:05 - PHP Notice:  Undefined variable: server in C:\MAMP\htdocs\toys\catalog\controller\common\footer.php on line 39
 2019-11-22 12:15:12 - PHP Notice:  Undefined variable: server in C:\MAMP\htdocs\toys\catalog\controller\common\footer.php on line 39
+2019-11-25 7:26:17 - PHP Notice:  Array to string conversion in C:\MAMP\htdocs\toys\system\library\template\Twig\Environment.php(403) : eval()'d code on line 81
+2019-11-25 7:26:17 - PHP Notice:  Array to string conversion in C:\MAMP\htdocs\toys\system\library\template\Twig\Environment.php(403) : eval()'d code on line 81
+2019-11-25 7:26:17 - PHP Notice:  Array to string conversion in C:\MAMP\htdocs\toys\system\library\template\Twig\Environment.php(403) : eval()'d code on line 81
+2019-11-25 7:26:56 - PHP Notice:  Array to string conversion in C:\MAMP\htdocs\toys\system\library\template\Twig\Environment.php(403) : eval()'d code on line 81
+2019-11-25 7:26:56 - PHP Notice:  Array to string conversion in C:\MAMP\htdocs\toys\system\library\template\Twig\Environment.php(403) : eval()'d code on line 81
+2019-11-25 7:26:56 - PHP Notice:  Array to string conversion in C:\MAMP\htdocs\toys\system\library\template\Twig\Environment.php(403) : eval()'d code on line 81
+2019-11-26 5:28:32 - PHP Notice:  Undefined variable: server in C:\MAMP\htdocs\toys\catalog\controller\common\footer.php on line 6
+2019-11-26 5:30:51 - PHP Notice:  Undefined variable: server in C:\MAMP\htdocs\toys\catalog\controller\common\footer.php on line 6
+2019-11-26 5:39:22 - PHP Notice:  Undefined variable: server in C:\MAMP\htdocs\toys\catalog\controller\common\footer.php on line 6
