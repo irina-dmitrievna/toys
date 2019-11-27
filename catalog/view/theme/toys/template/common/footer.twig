@@ -1,5 +1,4 @@
 <footer class="footer my-container">
-
   <section class="footer__information">
     <div class="footer__logo">
       {% if logo %}
@@ -11,24 +10,22 @@
       {% else %}
         <h1><a href="{{ home }}">{{ name }}</a></h1>
       {% endif %}
+      <h2 class="footer__slogan">“Мы развиваем будущее”</h2>
     </div>
     
-    <li>
-      <a href="#" class="footer__link">р. Крым, Советский район,<br>с. Раздольное, ул. Школьная 3-а</a>
-    </li>
+    <a href="#" class="footer__link">р. Крым, Советский район,<br>с. Раздольное, ул. Школьная 3-а</a>
 
     <li class="footer__contactNumbers">
       <ul>
-          <li>{{ telephone }}</li>
-          <li>{{ telephone2 }}</li>
-          <li>{{ telephone3 }}</li>
-        </ul>
+        <li class="footer__link">{{ telephone }}</li>
+        <li class="footer__link">{{ telephone2 }}</li>
+        <li class="footer__link">{{ telephone3 }}</li>
+      </ul>
     </li>
     
     <li>
       <a href="#" class="footer__link">zakaz@a-ya.toys</a>
     </li>
-
   </section>
 
   <section class="footer__aboutUs">
@@ -43,8 +40,8 @@
   <section class="footer__toBuyers">
     <h3>Покупателям</h3>
     <ul>
-      {% for key, information in informations if key >=1 and key < 3 %}
-        <li><a href="{{ information.href }}" class="footer__link">{{ information.title }}</a></li>
+      {% for key, information in informations if key >1 and key < 3 %}
+      <li><a href="{{ information.href }}" class="footer__link">{{ information.title }}</a></li>
       {% endfor %}
       <li><a href="#" class="footer__link">Гарантии</a></li>
       <li><a href="#" class="footer__link">Прайс-лист</a></li>  
@@ -59,9 +56,9 @@
     </ul>
   </section>
 
-
-
-
+  <div class="footer__social">
+    <p class="footer__powered">{{ powered }}</p>
+  </div>
 
   <!-- <div class="container">
     <div class="row">

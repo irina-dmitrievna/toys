@@ -1,13 +1,13 @@
 /* Specifications */
 
 :root{
-    /* font-colors */
     --orange1: #F38E3D;
     --orange2: #BD5605;
     --gray1:   #333333;
     --gray2:   #4F4F4F;
     --gray3:   #828282;
     --gray4:   #BDBDBD;
+    --container-width: 1180px;
 }
 
 *{
@@ -52,6 +52,13 @@ h2{
     text-align: center;
 }
 
+h3{
+    font: 600 18px/25px 'Open Sans', sans-serif;
+    color: var(--orange1);
+    margin-top: 38px;
+    margin-bottom: 27px;
+}
+
 h4{
     text-align: center;
 }
@@ -85,8 +92,8 @@ input[type="search"]::placeholder{
 }
 
 .my-container{
-    width: 1180px;
-    padding: 0 calc(50vw - 590px);
+    width: var(--container-width);
+    padding: 0 calc(50% - var(--container-width) / 2);
 }
 
 /* Header */
@@ -99,7 +106,7 @@ header{
     grid-template-rows: repeat(2, 55px);
     background-color: rgba(255, 255, 255, 0.8);
     text-transform: uppercase;
-    transition: all .3s ease;
+    transition: background .3s;
 }
 
 .header-active{
@@ -486,6 +493,12 @@ header{
 
 /* Manufactures*/
 
+.manufactures{
+    background: rgb(248,237,83);
+    background: linear-gradient(180deg, rgba(248,237,83,0) 0%, rgba(248,237,83,0.39) 100%);
+    padding-bottom: 96px;
+}
+
 .manufactures__carousel{
     position: relative;
     width: 994px;
@@ -505,19 +518,64 @@ header{
     top: calc(50% - 14.5px);
     left: -93px;
 }
+
+.manufactures__video{
+    width: 100%;
+    height: 320px;
+    margin-top: 115px;
+    border-radius: 10px;
+    background-image: url(../image/home-page/manufactures/video.jpg);
+    cursor: pointer;
+}
+
 /* Footer */
 
 .footer{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template: 1fr;
-    padding-top: 68px;
-    padding-bottom: 53px;
+    grid-template-columns: 520px repeat(3, 1fr);
+    padding-top: 30px;
+    padding-bottom: 52px;
     background: #8E3F00;
-    font: 400 16px/22px 'Open Sans', sans-serif;
-    color: #FFF;
+    color: #fff;
 }   
 
-footer li,a{
+.footer li{
+    display: block;
+    margin-bottom: 10px;
+}
+
+.footer__link{
     color: #fff;
+}
+
+.footer__link+.footer__link{
+    margin-top: 4px;
+}
+
+.footer__logo{
+    display: flex;
+    margin-bottom: 31px;
+}
+
+.footer__slogan{
+    font: 400 25px/31px 'Lobster', sans-serif;
+    letter-spacing: 0.05em;
+    color: #F8ED53;
+    margin-top: 37px;
+    margin-left: 20px;
+}
+
+.footer__contactNumbers{
+    margin-top: 27px;
+    margin-bottom: 19px;
+}
+
+.footer__partnership{
+    margin-left: auto;
+}
+
+.footer__social{
+    color: #fff;
+    grid-column: 3/5;
+    margin-left: auto;
 }
